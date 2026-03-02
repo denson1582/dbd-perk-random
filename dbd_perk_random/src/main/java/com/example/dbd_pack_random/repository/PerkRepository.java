@@ -1,5 +1,6 @@
 package com.example.dbd_pack_random.repository;
 
+import com.example.dbd_pack_random.model.Category;
 import com.example.dbd_pack_random.model.Perk;
 import com.example.dbd_pack_random.model.Role;
 import java.util.List;
@@ -13,5 +14,5 @@ public interface PerkRepository extends JpaRepository<Perk, Long> {
   List<Perk> findByRoleAndIsExcludedFalse(Role role);
 
   // 特定のロールかつ特定のカテゴリで、除外されていないパークを取得
-  List<Perk> findByRoleAndCategoryAndIsExcludedFalse(String role, String category);
+  List<Perk> findByRoleAndCategoryAndIsExcludedFalse(Role role, Category category);
 }

@@ -10,14 +10,18 @@ public class Perk {
   private Long id;
 
   private String name;
+
+  @Enumerated(EnumType.ORDINAL) // 0 or 1 を正しく読み込むために必要
   private Role role;
 
-  @ManyToOne(fetch = FetchType.EAGER) // ここが重要！「多くのパークが1つのカテゴリに属する」という印
-  @JoinColumn(name = "category_id")   // DBの「category_id」列と紐付けるという印
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id")
   private Category category;
 
-  private  int stars;
-  private  int weight;
+  private int stars;
+  private int weight;
+
+  @Column(name = "is_excluded") // SQLの is_excluded と紐付ける
   private boolean isExcluded;
 
   protected Perk() {}
