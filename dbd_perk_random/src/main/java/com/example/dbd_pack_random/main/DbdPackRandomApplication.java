@@ -1,4 +1,4 @@
-package com.example.dbd_pack_random;
+package com.example.dbd_pack_random.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
