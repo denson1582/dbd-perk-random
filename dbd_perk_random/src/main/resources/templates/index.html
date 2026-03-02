@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DbD Pack Randomizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { background: #0a0a0a; color: white; font-family: 'Noto Sans JP', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+    h1 { font-family: 'Teko', sans-serif; font-size: 4rem; letter-spacing: 2px; margin-bottom: 40px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    .menu { display: flex; gap: 30px; }
+    .btn { padding: 30px 60px; font-size: 1.8rem; font-family: 'Teko', sans-serif; text-decoration: none; color: white; border-radius: 4px; transition: 0.3s; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-surv { background: linear-gradient(45deg, #1e3c72, #2a5298); box-shadow: 0 0 15px rgba(41, 128, 185, 0.4); }
+    .btn-surv:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(41, 128, 185, 0.8); border-color: #3498db; }
+    .btn-killer { background: linear-gradient(45deg, #8e0e00, #1f1c18); box-shadow: 0 0 15px rgba(192, 57, 43, 0.4); }
+    .btn-killer:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(192, 57, 43, 0.8); border-color: #e74c3c; }
+  </style>
+</head>
+<body>
+<h1>PACK RANDOMIZER</h1>
+<div class="menu">
+  <a href="/survivor" class="btn btn-surv">Survivor</a>
+  <a href="/killer" class="btn btn-killer">Killer</a>
+</div>
+</body>
+</html>

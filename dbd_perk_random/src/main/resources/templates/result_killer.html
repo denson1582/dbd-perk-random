@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>K-Randomizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { background: #1a0a0a; color: #eee; font-family: 'Noto Sans JP', sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; }
+    .container { max-width: 500px; width: 100%; }
+    .header { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #e74c3c; text-align: center; margin-bottom: 20px; text-shadow: 0 0 15px rgba(231, 76, 60, 0.4); }
+
+    /* 抽選前：中央の大きなボタンエリア */
+    .roll-start-area { text-align: center; padding: 60px 20px; border: 2px dashed rgba(231, 76, 60, 0.3); border-radius: 15px; margin-top: 40px; }
+    .msg { color: #888; font-size: 1.1rem; margin-bottom: 30px; letter-spacing: 2px; }
+
+    /* パークカード表示 */
+    .card { background: rgba(40, 10, 10, 0.6); border-left: 5px solid #e74c3c; margin-bottom: 15px; padding: 18px; border-radius: 2px; display: flex; justify-content: space-between; align-items: center; animation: slideIn 0.5s ease-out; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+    .p-info { display: flex; flex-direction: column; }
+    .p-cat { font-size: 0.75rem; color: #e74c3c; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+    .p-name { font-size: 1.3rem; font-weight: bold; }
+    .p-stars { font-family: 'Teko', sans-serif; font-size: 2rem; color: #f1c40f; }
+
+    .total-box { text-align: right; padding: 15px; border-top: 1px solid rgba(231, 76, 60, 0.3); margin-top: 10px; font-family: 'Teko', sans-serif; font-size: 1.8rem; }
+
+    /* UIボタン */
+    .footer { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+    .btn-ui { display: inline-block; background: #222; color: #ccc; text-decoration: none; padding: 12px 30px; border-radius: 4px; font-size: 1rem; border: 1px solid #444; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
+    .btn-primary { background: #e74c3c; color: white; border: none; font-weight: bold; font-family: 'Teko', sans-serif; font-size: 1.5rem; padding: 10px 40px; }
+    .btn-primary:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231, 76, 60, 0.6); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">KILLER PERKS</div>
+
+  <div th:if="${killerPerks == null}" class="roll-start-area">
+    <p class="msg">THE ENTITY WAITS...</p>
+    <form th:action="@{/killer/draw}" method="post">
+      <button type="submit" class="btn-ui btn-primary">抽選開始</button>
+    </form>
+    <a href="/" class="btn-ui" style="margin-top: 20px;">戻る</a>
+  </div>
+
+  <div th:if="${killerPerks != null}">
+    <div th:each="p : ${killerPerks}" class="card">
+      <div class="p-info">
+        <span class="p-cat" th:text="${p.category.name}">CATEGORY</span>
+        <span class="p-name" th:text="${p.name}">PERK NAME</span>
+      </div>
+      <div class="p-stars" th:text="'★' + ${p.stars}">★3</div>
+    </div>
+    <div class="total-box">TOTAL COST: <span style="color: #f1c40f;">12</span> / 12</div>
+    <div class="footer">
+      <a href="/" class="btn-ui">戻る</a>
+      <form th:action="@{/killer/draw}" method="post">
+        <button type="submit" class="btn-ui btn-primary">再抽選</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
