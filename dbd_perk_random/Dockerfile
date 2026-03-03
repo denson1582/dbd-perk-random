@@ -1,10 +1,13 @@
-# ビルドステージ
-FROM maven:3.8-openjdk-17 AS build
+# バージョンを21に上げ、より汎用的な構成にします
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
 
-# 実行ステージ
-FROM openjdk:17-jdk-slim
-COPY --from=build /target/*.jar app.jar
+# エラーの詳細を出力させる設定
+RUN mvn clean package -DskipTests --errors --batch-mode
+
+FROM eclipse-temurin:21-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
