@@ -11,7 +11,7 @@ public class Perk {
 
   private String name;
 
-  @Enumerated(EnumType.ORDINAL) // 0 or 1 を正しく読み込むために必要
+  @Enumerated(EnumType.ORDINAL)
   private Role role;
 
   @ManyToOne(fetch = FetchType.EAGER)
@@ -21,7 +21,7 @@ public class Perk {
   private int stars;
   private int weight;
 
-  @Column(name = "is_excluded") // SQLの is_excluded と紐付ける
+  @Column(name = "is_excluded")
   private boolean isExcluded;
 
   protected Perk() {}
@@ -35,28 +35,18 @@ public class Perk {
     this.isExcluded = isExcluded;
   }
 
-  public String getName() {
-    return name;
-  }
+  // --- Getter ---
+  public Long getId() { return id; }
+  public String getName() { return name; }
+  public Role getRole() { return role; }
+  public Category getCategory() { return  category; }
+  public int getStars() { return stars; }
+  public int getWeight() { return weight; }
+  public boolean isExcluded() { return isExcluded; }
 
-  public Role getRole() {
-    return role;
-  }
-
-  public Category getCategory() {
-    return  category;
-  }
-
-  public  int getStars() {
-    return stars;
-  }
-
-  public int getWeight() {
-    return weight;
-  }
-
-  public boolean isExcluded() {
-    return isExcluded;
+  // --- Setter (★これが必要！) ---
+  public void setExcluded(boolean excluded) {
+    this.isExcluded = excluded;
   }
 
   @Override

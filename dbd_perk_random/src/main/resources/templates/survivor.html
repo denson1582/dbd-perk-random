@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>S-Randomizer | Ready</title>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { background: #0f172a; color: white; font-family: 'Noto Sans JP', sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; }
+    .container { max-width: 500px; width: 100%; }
+    .header { font-family: 'Teko', sans-serif; font-size: 3.5rem; color: #3498db; text-align: center; margin-bottom: 20px; text-shadow: 0 0 15px rgba(52, 152, 219, 0.4); }
+    .roll-start-area { text-align: center; padding: 60px 20px; border: 2px dashed rgba(52, 152, 219, 0.3); border-radius: 15px; margin-top: 40px; }
+    .msg { color: #888; font-size: 1.1rem; margin-bottom: 30px; letter-spacing: 2px; }
+    .btn-ui { display: inline-block; background: #333; color: white; text-decoration: none; padding: 12px 30px; border-radius: 4px; font-size: 1rem; border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
+    .btn-primary { background: #3498db; font-weight: bold; font-family: 'Teko', sans-serif; font-size: 1.5rem; padding: 10px 40px; transition: 0.3s; }
+    .btn-primary:hover { background: #2980b9; box-shadow: 0 0 20px rgba(52, 152, 219, 0.6); }
+    .container { padding-top: 100px; /* ナビゲーションの高さ分だけ下にずらす */ }
+  </style>
+</head>
+<body>
+<nav style="width: 100%; background: rgba(0,0,0,0.8); border-bottom: 1px solid #333; padding: 15px 0; display: flex; justify-content: center; gap: 40px; position: fixed; top: 0; z-index: 100;">
+  <a th:href="@{/}" style="color: #888; text-decoration: none; font-family: 'Teko'; font-size: 1.5rem;">TOP</a>
+  <a th:href="@{/survivor}" style="color: #3498db; text-decoration: none; font-family: 'Teko'; font-size: 1.5rem;">SURVIVOR</a>
+  <a th:href="@{/killer}" style="color: #e74c3c; text-decoration: none; font-family: 'Teko'; font-size: 1.5rem;">KILLER</a>
+  <a th:href="@{/admin}" style="color: #f1c40f; text-decoration: none; font-family: 'Teko'; font-size: 1.5rem;">ADMIN</a>
+</nav>
+<div class="container">
+  <div class="header">SURVIVOR PERKS</div>
+  <div class="roll-start-area">
+    <p class="msg">READY TO ROLL?</p>
+    <form th:action="@{/survivor/draw}" method="post">
+      <button type="submit" class="btn-ui btn-primary">抽選開始</button>
+    </form>
+    <a th:href="@{/}" class="btn-ui" style="margin-top: 20px;">TOPへ戻る</a>
+  </div>
+</div>
+</body>
+</html>

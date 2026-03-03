@@ -2,24 +2,156 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>DbD Perk Randomizer</title>
+  <title>DbD Randomizer | HOME</title>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { background: #0a0a0a; color: white; font-family: 'Noto Sans JP', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-    h1 { font-family: 'Teko', sans-serif; font-size: 4rem; letter-spacing: 2px; margin-bottom: 40px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-    .menu { display: flex; gap: 30px; }
-    .btn { padding: 30px 60px; font-size: 1.8rem; font-family: 'Teko', sans-serif; text-decoration: none; color: white; border-radius: 4px; transition: 0.3s; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); }
-    .btn-surv { background: linear-gradient(45deg, #1e3c72, #2a5298); box-shadow: 0 0 15px rgba(41, 128, 185, 0.4); }
-    .btn-surv:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(41, 128, 185, 0.8); border-color: #3498db; }
-    .btn-killer { background: linear-gradient(45deg, #8e0e00, #1f1c18); box-shadow: 0 0 15px rgba(192, 57, 43, 0.4); }
-    .btn-killer:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(192, 57, 43, 0.8); border-color: #e74c3c; }
+    body {
+        background: #0a0a0a;
+        color: white;
+        font-family: 'Noto Sans JP', sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    /* 共通ナビゲーションバー */
+    nav {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        border-bottom: 1px solid #333;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+    }
+    nav a {
+        text-decoration: none;
+        font-family: 'Teko';
+        font-size: 1.5rem;
+        transition: 0.3s;
+    }
+    nav a:hover { opacity: 0.7; }
+
+    /* メインコンテンツエリア */
+    .content {
+        text-align: center;
+        margin-top: 60px; /* ナビとの適切な距離 */
+    }
+
+    p.brand {
+        color: #e74c3c;
+        letter-spacing: 5px;
+        margin-bottom: 5px;
+        font-family: 'Teko', sans-serif;
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-family: 'Teko', sans-serif;
+        font-size: 6rem;
+        margin: 0;
+        margin-bottom: 10px; /* 密着しすぎないよう適度な隙間を確保 */
+        letter-spacing: 5px;
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.4), 0 0 10px rgba(231, 76, 60, 0.5);
+        line-height: 1.1;
+    }
+
+    /* カードの横並び設定 */
+    .menu-container {
+        display: flex;
+        gap: 30px;
+        margin-top: 40px; /* タイトルとの重なりを避けるための余白 */
+        justify-content: center;
+    }
+
+    .nav-card {
+        width: 260px;
+        height: 360px;
+        border: 1px solid #222;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        transition: 0.4s;
+        background: linear-gradient(180deg, #111 0%, #050505 100%);
+        border-radius: 4px;
+    }
+
+    .nav-card:hover {
+        transform: translateY(-10px);
+        background: #151515;
+    }
+
+    /* サバイバーホバー */
+    .nav-card.surv:hover {
+        box-shadow: 0 0 40px rgba(52, 152, 219, 0.2);
+        border-color: #3498db;
+    }
+    /* キラーホバー */
+    .nav-card.killer:hover {
+        box-shadow: 0 0 40px rgba(231, 76, 60, 0.2);
+        border-color: #e74c3c;
+    }
+
+    .nav-card h2 { font-family: 'Teko', sans-serif; font-size: 2.8rem; margin: 10px 0; }
+    .nav-card p { font-size: 0.75rem; color: #555; text-transform: uppercase; margin: 0; letter-spacing: 2px; }
+
+    .icon { font-size: 4rem; margin-top: 20px; opacity: 0.9; }
+
+    /* 管理ボタン */
+    .admin-btn {
+        margin-top: 40px;
+        display: inline-block;
+        color: #333;
+        text-decoration: none;
+        font-size: 0.8rem;
+        transition: 0.3s;
+        border: 1px solid #1a1a1a;
+        padding: 6px 18px;
+        border-radius: 2px;
+    }
+    .admin-btn:hover { color: #f1c40f; border-color: #f1c40f; background: rgba(241, 196, 15, 0.05); }
+
   </style>
 </head>
 <body>
-<h1>PERK RANDOMIZER</h1>
-<div class="menu">
-  <a href="/survivor" class="btn btn-surv">Survivor</a>
-  <a href="/killer" class="btn btn-killer">Killer</a>
+
+<nav>
+  <a th:href="@{/}" style="color: #fff;">TOP</a>
+  <a th:href="@{/survivor}" style="color: #3498db;">SURVIVOR</a>
+  <a th:href="@{/killer}" style="color: #e74c3c;">KILLER</a>
+  <a th:href="@{/admin}" style="color: #f1c40f;">ADMIN</a>
+</nav>
+
+<div class="content">
+  <p class="brand">DEAD BY DAYLIGHT</p>
+  <h1>RANDOMIZER</h1>
+
+  <div class="menu-container">
+    <a th:href="@{/survivor}" class="nav-card surv">
+      <p>SELECT ROLE</p>
+      <h2>SURVIVOR</h2>
+      <div class="icon" style="color: #3498db;">👤</div>
+    </a>
+
+    <a th:href="@{/killer}" class="nav-card killer">
+      <p>SELECT ROLE</p>
+      <h2>KILLER</h2>
+      <div class="icon" style="color: #e74c3c;">🔪</div>
+    </a>
+  </div>
+
+  <a th:href="@{/admin}" class="admin-btn">⚙️ SETTINGS</a>
 </div>
+
 </body>
 </html>

@@ -69,7 +69,7 @@ INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES (
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('怪我の功名', 0, 3, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('強硬手段', 0, 2, 4, 11, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('突破', 0, 4, 2, 22, FALSE);
-INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('不安の元凶', 1, 5, 2, 22, FALSE);
+INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('不安の元凶', 1, 6, 2, 22, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('野蛮な力', 1, 6, 4, 11, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('興奮', 1, 6, 4, 11, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('捕食者', 1, 7, 3, 15, FALSE);
@@ -78,7 +78,7 @@ INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES (
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('不屈', 1, 6, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('光より出でし者', 1, 6, 1, 44, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('ガラクタいじり', 1, 6, 3, 15, FALSE);
-INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('喘鳴', 1, 7, 3, 15, FALSE);
+INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('喘鳴', 1, 6, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('死恐怖症', 1, 5, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('看護婦の使命', 1, 7, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('第三の封印', 1, 8, 2, 22, FALSE);
@@ -123,7 +123,7 @@ INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES (
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('残心の戦術', 1, 6, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('血の共鳴', 1, 6, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('天誅', 1, 6, 3, 15, FALSE);
-INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('囁き', 1, 7, 3, 15, FALSE);
+INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('囁き', 1, 6, 3, 15, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('ツルツルとした肉体', 0, 4, 1, 44, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('異形の祭壇', 1, 6, 2, 22, FALSE);
 INSERT INTO perks (name, role, category_id, stars, weight, is_excluded) VALUES ('痛みも気から', 0, 2, 1, 44, FALSE);
